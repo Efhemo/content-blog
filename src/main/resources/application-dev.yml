@@ -5,11 +5,6 @@ spring:
     password: ${DEV_DB_PASSWORD}
     name: spring-content
 
-#  sql:
-#    init:
-#      mode: always
-
-
   jpa:
     generate-ddl: true
     hibernate:
