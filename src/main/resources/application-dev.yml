@@ -10,8 +10,7 @@ spring:
 #      mode: always
 
 
-#  jpa:
-#    generate-ddl: true
-#    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
-#    hibernate:
-#      ddl-auto: create
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
