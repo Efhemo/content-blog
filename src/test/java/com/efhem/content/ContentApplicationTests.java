@@ -1,10 +1,10 @@
-package com.efhem.demo;
+package com.efhem.content;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class ContentApplicationTests {
 
 	@Test
 	void contextLoads() {

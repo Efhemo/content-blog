@@ -1,8 +1,8 @@
-package com.efhem.demo.repository;
+package com.efhem.content.repository;
 
-import com.efhem.demo.model.Content;
-import com.efhem.demo.model.ContentMediaType;
-import com.efhem.demo.model.ContentStatus;
+import com.efhem.content.model.Content;
+import com.efhem.content.model.ContentMediaType;
+import com.efhem.content.model.ContentStatus;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
 

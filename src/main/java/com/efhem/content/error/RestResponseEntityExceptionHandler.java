@@ -1,6 +1,6 @@
-package com.efhem.demo.error;
+package com.efhem.content.error;
 
-import com.efhem.demo.model.ErrorMessage;
+import com.efhem.content.model.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

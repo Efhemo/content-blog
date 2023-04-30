@@ -1,4 +1,4 @@
-package com.efhem.demo.model;
+package com.efhem.content.model;
 
 public enum ContentStatus {
     IDEA,

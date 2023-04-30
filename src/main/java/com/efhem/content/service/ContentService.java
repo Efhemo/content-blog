@@ -1,14 +1,10 @@
-package com.efhem.demo.service;
+package com.efhem.content.service;
 
-import com.efhem.demo.entity.ContentEntity;
-import com.efhem.demo.model.Content;
-import com.efhem.demo.model.ContentMediaType;
-import com.efhem.demo.model.ContentStatus;
-import com.efhem.demo.repository.ContentRepository;
-import jakarta.annotation.PostConstruct;
+import com.efhem.content.entity.ContentEntity;
+import com.efhem.content.model.Content;
+import com.efhem.content.repository.ContentRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service

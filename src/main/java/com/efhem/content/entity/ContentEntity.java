@@ -1,9 +1,8 @@
-package com.efhem.demo.entity;
+package com.efhem.content.entity;
 
-import com.efhem.demo.model.ContentMediaType;
-import com.efhem.demo.model.ContentStatus;
+import com.efhem.content.model.ContentMediaType;
+import com.efhem.content.model.ContentStatus;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDateTime;
 
