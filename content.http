@@ -1,0 +1,38 @@
+### Get all contents
+GET http://localhost:8080/api/content
+
+### Get content by id
+GET http://localhost:8080/api/content/2
+
+###
+POST http://localhost:8080/api/content
+Content-Type: application/json
+
+{
+    "title": "Android Architecture Guide",
+    "desc": "architecture",
+    "status": "IDEA",
+    "type": "ARTICLE",
+    "createdAt": "2023-04-22T14:59:00.348853",
+    "updatedAt": null,
+    "url": ""
+}
+
+###
+PUT http://localhost:8080/api/content/2
+Content-Type: application/json
+
+{
+    "id": 2,
+    "title": "Android Architecture Guide",
+    "desc": "architecture guildline",
+    "status": "IDEA",
+    "type": "ARTICLE",
+    "createdAt": "2023-04-22T14:59:00.348853",
+    "updatedAt": "2023-05-22T14:59:00.348853",
+    "url": ""
+}
+
+
+###
+DELETE http://localhost:8080/api/content/2
