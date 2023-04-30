@@ -50,7 +50,7 @@ public class ContentService {
         return new Content(
                 content.getId(),
                 content.getTitle(),
-                content.getDesc(),
+                content.getDescription(),
                 content.getStatus(),
                 content.getType(),
                 content.getCreatedAt(),
@@ -63,7 +63,7 @@ public class ContentService {
         var contentEntity =  new ContentEntity();
         contentEntity.setId(content.id());
         contentEntity.setTitle(content.title());
-        contentEntity.setDesc(content.desc());
+        contentEntity.setDescription(content.desc());
         contentEntity.setStatus(content.status());
         contentEntity.setType(content.type());
         contentEntity.setCreatedAt(content.createdAt());

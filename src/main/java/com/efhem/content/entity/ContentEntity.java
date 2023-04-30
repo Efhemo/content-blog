@@ -23,7 +23,7 @@ public class ContentEntity {
 
     private Integer id;
     private String title;
-    private String desc;
+    private String description;
     @Enumerated(EnumType.STRING)
     private ContentStatus status;
 
@@ -53,12 +53,12 @@ public class ContentEntity {
         this.title = title;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String desc) {
+        this.description = desc;
     }
 
     public ContentStatus getStatus() {
