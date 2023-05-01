@@ -26,7 +26,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(
                   authorizeRequest ->
                     //Permit some url that doesn't need authentication
-                    authorizeRequest.requestMatchers("/api/v1/auth").permitAll()
+                    authorizeRequest.requestMatchers("/api/v1/auth/**").permitAll()
                     //The rest of the url requires authentication
                     .anyRequest().authenticated()
                 )

@@ -1,0 +1,21 @@
+### Sign up user
+POST http://localhost:8080/api/v1/auth/signUp
+Content-Type: application/json
+
+{
+  "firstname": "John",
+  "lastname": "Doe",
+  "email": "johndoe@mail.com",
+  "password": "johndoe72",
+  "createdAt": "2023-04-22T14:59:00.348853",
+  "updatedAt": null
+}
+
+### Sign in user
+POST http://localhost:8080/api/v1/auth/signIn
+Content-Type: application/json
+
+{
+  "email": "johndoe@mail.com",
+  "password": "johndoe72"
+}
