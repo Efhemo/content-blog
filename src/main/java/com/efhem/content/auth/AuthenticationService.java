@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -33,7 +34,7 @@ public class AuthenticationService {
                 .email(request.getEmail())
                 .isEnabled(true)
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.USER)
+                .role(request.getRole())
                 .createdAt(new Date())
                 .build();
         userRepository.save(user);

@@ -1,5 +1,6 @@
 package com.efhem.content.auth.model;
 
+import com.efhem.content.user.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,4 +16,5 @@ public class SignupRequest {
     private String lastname;
     private String email;
     private String password;
+    private Role role;
 }
