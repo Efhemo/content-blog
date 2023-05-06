@@ -1,4 +1,4 @@
-package com.efhem.content.auth;
+package com.efhem.content.auth.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

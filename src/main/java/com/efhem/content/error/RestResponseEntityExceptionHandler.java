@@ -1,7 +1,5 @@
 package com.efhem.content.error;
 
-import com.efhem.content.model.ErrorMessage;
-import jakarta.servlet.ServletException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;

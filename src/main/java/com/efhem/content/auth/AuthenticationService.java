@@ -1,5 +1,8 @@
 package com.efhem.content.auth;
 
+import com.efhem.content.auth.model.AuthenticationResponse;
+import com.efhem.content.auth.model.SignInRequest;
+import com.efhem.content.auth.model.SignupRequest;
 import com.efhem.content.config.JWTService;
 import com.efhem.content.user.Role;
 import com.efhem.content.user.User;

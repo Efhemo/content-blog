@@ -1,8 +1,8 @@
-package com.efhem.content.service;
+package com.efhem.content.content;
 
-import com.efhem.content.entity.ContentEntity;
-import com.efhem.content.model.Content;
-import com.efhem.content.repository.ContentRepository;
+import com.efhem.content.content.ContentEntity;
+import com.efhem.content.content.model.Content;
+import com.efhem.content.content.ContentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.efhem.content.model;
+package com.efhem.content.content.model;
 
 import jakarta.validation.constraints.NotBlank;
 

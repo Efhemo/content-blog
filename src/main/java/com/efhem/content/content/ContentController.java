@@ -1,8 +1,7 @@
-package com.efhem.content.controller;
+package com.efhem.content.content;
 
 
-import com.efhem.content.model.Content;
-import com.efhem.content.service.ContentService;
+import com.efhem.content.content.model.Content;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

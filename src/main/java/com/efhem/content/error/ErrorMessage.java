@@ -1,4 +1,4 @@
-package com.efhem.content.model;
+package com.efhem.content.error;
 
 import org.springframework.http.HttpStatus;
 
