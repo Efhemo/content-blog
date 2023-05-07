@@ -1,8 +1,7 @@
 package com.efhem.content.content;
 
-import com.efhem.content.content.ContentEntity;
 import com.efhem.content.content.model.Content;
-import com.efhem.content.content.ContentRepository;
+import com.efhem.content.error.exception.DemoNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,8 +23,17 @@ public class ContentService {
         return toContent(repository.findById(id).orElseThrow());
     }
 
-    public void save(Content content){
-        repository.save(toContentEntity(content));
+    public Content save(Content content){
+        var contentEntity =  repository.save(toContentEntity(content));
+        return toContent(contentEntity);
+    }
+
+    public Content update(Content content){
+        if(!exist(content.id())){
+            throw new DemoNotFoundException("Content not found");
+        }
+        var contentEntity =  repository.save(toContentEntity(content));
+        return toContent(contentEntity);
     }
 
     public void delete(Integer id){

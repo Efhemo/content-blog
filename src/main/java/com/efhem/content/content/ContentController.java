@@ -32,17 +32,12 @@ class ContentController {
     }
 
     @PostMapping()
-    @ResponseStatus(HttpStatus.CREATED)
-    public void save(@Valid @RequestBody Content content){
-        service.save(content);
+    public ResponseEntity<Content> save(@Valid @RequestBody Content content){
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(content));
     }
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
-    public void update(@RequestBody Content content, @PathVariable Integer id){
-        if(!service.exist(id)){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Content not found");
-        }
-        service.save(content);
+    public ResponseEntity<Content> update(@RequestBody Content content, @PathVariable Integer id){
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.update(content));
     }
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")

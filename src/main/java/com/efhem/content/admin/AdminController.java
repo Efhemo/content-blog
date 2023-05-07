@@ -21,9 +21,9 @@ public class AdminController {
         return "GET:: admin controller";
     }
 
-    @PostMapping
+    @PutMapping
     @PreAuthorize("hasAuthority('admin:update')")
-    public String put(){
+    public String update(){
         return "UPDATE:: admin controller";
     }
 

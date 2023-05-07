@@ -1,7 +1,9 @@
 package com.efhem.content.config;
 
+import com.efhem.content.error.DelegatedAuthenticationEntryPoint;
 import com.efhem.content.token.TokenService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -11,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -29,6 +32,7 @@ public class SecurityConfiguration {
     private final JWTAuthenticationFilter jwtAuthenticationFilter;
 
     private final TokenService tokenService;
+    private final DelegatedAuthenticationEntryPoint authenticationEntryPoint;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity https) throws Exception {
@@ -51,7 +55,12 @@ public class SecurityConfiguration {
                              //The rest of the url requires authentication
                             .anyRequest().authenticated()
                 )
+
+                .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint)
+
+
                 //STATELESS because we are authenticating once per request
+                .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()

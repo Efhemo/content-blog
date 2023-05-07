@@ -1,5 +1,6 @@
 ### Get all contents
 GET http://localhost:8080/api/v1/content
+Authorization: Bearer
 
 ### Get content by id
 GET http://localhost:8080/api/v1/content/2
@@ -7,10 +8,11 @@ GET http://localhost:8080/api/v1/content/2
 ###
 POST http://localhost:8080/api/v1/content
 Content-Type: application/json
+Authorization: Bearer
 
 {
-    "title": "Android Architecture Guide",
-    "desc": "architecture",
+    "title": "Python Architecture Guide",
+    "desc": "Introduction to python",
     "status": "IDEA",
     "type": "ARTICLE",
     "createdAt": "2023-04-22T14:59:00.348853",
@@ -21,13 +23,14 @@ Content-Type: application/json
 ###
 PUT http://localhost:8080/api/v1/content/2
 Content-Type: application/json
+Authorization: Bearer
 
 {
     "id": 2,
-    "title": "Android Architecture Guide",
-    "desc": "architecture guildline",
+    "title": "Python Architecture Guide",
+    "desc": "Introduction to python",
     "status": "IDEA",
-    "type": "ARTICLE",
+    "type": "COURSE",
     "createdAt": "2023-04-22T14:59:00.348853",
     "updatedAt": "2023-05-22T14:59:00.348853",
     "url": ""
