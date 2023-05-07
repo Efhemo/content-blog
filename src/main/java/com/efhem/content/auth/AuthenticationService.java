@@ -4,6 +4,9 @@ import com.efhem.content.auth.model.AuthenticationResponse;
 import com.efhem.content.auth.model.SignInRequest;
 import com.efhem.content.auth.model.SignupRequest;
 import com.efhem.content.config.JWTService;
+import com.efhem.content.token.TokenEntity;
+import com.efhem.content.token.TokenRepository;
+import com.efhem.content.token.TokenType;
 import com.efhem.content.user.Role;
 import com.efhem.content.user.User;
 import com.efhem.content.user.UserRepository;
@@ -15,13 +18,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
 
     private final UserRepository userRepository;
+    private final TokenRepository tokenRepository;
     private final PasswordEncoder passwordEncoder;
     private final JWTService jwtService;
 
@@ -41,7 +44,34 @@ public class AuthenticationService {
 
         var jwtToken = jwtService.generateToken(user);
 
+        revokeExistingTokens(user);
+        saveToken(user, jwtToken);
+
         return new AuthenticationResponse( jwtToken );
+    }
+
+    private void revokeExistingTokens(User user){
+        //revoke all token
+        var existingTokens = tokenRepository.findAllValidTokenByUser(user.getId());
+        if(existingTokens.isEmpty()){
+            return;
+        }
+        existingTokens.forEach(tokenEntity -> {
+            tokenEntity.setExpired(true);
+            tokenEntity.setRevoked(true);
+        });
+        tokenRepository.saveAll(existingTokens);
+    }
+
+    private void saveToken(User user, String jwtToken){
+        var token = TokenEntity.builder()
+                .tokenType(TokenType.BEARER)
+                .token(jwtToken)
+                .user(user)
+                .isExpired(false)
+                .isRevoked(false)
+                .build();
+        tokenRepository.save(token);
     }
 
     public AuthenticationResponse signIn(SignInRequest request) {
@@ -58,6 +88,10 @@ public class AuthenticationService {
         authManager.authenticate(authentication);
 
         var jwtToken = jwtService.generateToken(user);
+
+        revokeExistingTokens(user);
+        saveToken(user, jwtToken);
+
         return new AuthenticationResponse( jwtToken );
     }
 }

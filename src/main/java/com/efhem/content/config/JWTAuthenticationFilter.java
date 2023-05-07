@@ -1,5 +1,6 @@
 package com.efhem.content.config;
 
+import com.efhem.content.token.TokenRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,6 +23,8 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
 
     private final JWTService jwtService;
     private final UserDetailsService userDetailsService;
+
+    private final TokenRepository tokenRepository;
     @Override
     protected void doFilterInternal(
             @NotNull HttpServletRequest request,
@@ -41,7 +44,10 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         //If known user is not authenticated, authenticate it if it has a valid token
         if(username != null && SecurityContextHolder.getContext().getAuthentication() == null){
             final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-            if(jwtService.isTokenValid(jwtToken, userDetails)){
+            var isValidToken = tokenRepository.findByToken(jwtToken)
+                    .map(tokenEntity -> !tokenEntity.isExpired() && !tokenEntity.isRevoked())
+                    .orElse(false);
+            if(jwtService.isTokenValid(jwtToken, userDetails) && isValidToken){
                 final UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities()
                 );
